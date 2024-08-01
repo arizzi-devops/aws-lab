@@ -44,11 +44,11 @@ jobs:
 
       - name: Terraform - Init
         id: init
-        run: terraform init -backend=true -backend-config="config/${{ env.name }}/${{ env.name }}.backend.tfvars"
+        run: terraform init -backend=true -backend-config="config/${{ environment.name }}/${{ env.name }}.backend.tfvars"
 
       - name: Terraform - Plan
         id: plan
-        run: terraform plan -input=false -var-file=config/${{ env.name }}/terraform.tfvars
+        run: terraform plan -input=false -var-file=config/${{ environment.name }}/${{ env.name }}.tfvars
 
       # - name: Terraform - Apply
       #   id: apply
