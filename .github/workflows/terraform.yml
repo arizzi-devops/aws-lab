@@ -27,7 +27,6 @@ jobs:
       run:
         working-directory: "${{ env.tf_folder }}"
     environment:
-      name2: local
       name: local
     steps:
       - name: checkout
