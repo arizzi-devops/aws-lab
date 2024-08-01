@@ -12,6 +12,9 @@ env:
   ssh_file: id_rsa
   aws-region: "${{ secrets.AWS_REGION }}"
   TF_LOG: INFO
+  name1: local
+  name: local
+
   # root_folder: "${{ runner.workspace }}"
 
 jobs:
@@ -24,6 +27,7 @@ jobs:
       run:
         working-directory: "${{ env.tf_folder }}"
     environment:
+      name1: local
       name: local
     steps:
       - name: checkout
