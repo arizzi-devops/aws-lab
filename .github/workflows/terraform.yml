@@ -23,6 +23,8 @@ jobs:
     defaults:
       run:
         working-directory: "${{ env.tf_folder }}"
+    environment:
+      name: local
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -41,15 +43,15 @@ jobs:
 
       - name: Terraform - Init
         id: init
-        run: terraform init -backend=true -backend-config="config/local/backend.hcl"
+        run: terraform init -backend=true -backend-config="config/${{ env.name }}/${{ env.name }}.backend.tfvars"
 
       - name: Terraform - Plan
         id: plan
-        run: terraform plan -input=false -var-file=config/local/terraform.tfvars
+        run: terraform plan -input=false -var-file=config/${{ env.name }}/terraform.tfvars
 
       # - name: Terraform - Apply
       #   id: apply
-      #   run: terraform apply -auto-approve -var-file=config/local/terraform.tfvars
+      #   run: terraform apply -auto-approve -var-file=config/${{ env.name }}/terraform.tfvars
 
       - name: Terraform Status
         if: steps.plan.outcome == 'failure' || steps.validate.outcome == 'failure' || steps.init.outcome == 'failure' || steps.fmt.outcome == 'failure'
