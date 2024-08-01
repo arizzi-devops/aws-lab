@@ -2,20 +2,14 @@ version: 2
 projects:
   - name: tf-project
     dir: tf-project
-workflows:
-  production:
-    plan:
-      steps:
-      - run: rm -rf .terraform # Otherwise terraform will get confused.
-      - init:
-          extra_args: [-backend-config=tf-project/config/local/production.backend.tfvars]
-      - plan:
-          extra_args: [-var-file=tf-project/config/local/production.tfvars]
-  local:
-    plan:
-      steps:
-      - run: rm -rf .terraform
-      - init:
-          extra_args: [-backend-config=tf-project/config/local/local.backend.tfvars]
-      - plan:
-          extra_args: [-var-file=tf-project/config/local/local.tfvars]
+    workflow: myworkflow
+
+# workflows:
+#   local:
+#     plan:
+#       steps:
+#       - run: rm -rf .terraform
+#       - init:
+#           extra_args: [-backend-config=tf-project/config/local/local.backend.tfvars]
+#       - plan:
+#           extra_args: [-var-file=tf-project/config/local/local.tfvars]
