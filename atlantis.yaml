@@ -2,7 +2,6 @@ version: 2
 projects:
   - name: tf-project
     dir: tf-project
-    workflow: myworkflow
 
 # workflows:
 #   local:
