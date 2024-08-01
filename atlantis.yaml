@@ -28,23 +28,23 @@ projects:
   execution_order_group: 1
   depends_on:
     - project-1
-  workflow: myworkflow
-workflows:
-  myworkflow:
-    plan:
-      steps:
-      - run: my-custom-command arg1 arg2
-      - run:
-          command: my-custom-command arg1 arg2
-          output: hide
-      - init
-      - plan:
-          extra_args: ["-lock", "false"]
-      - run: my-custom-command arg1 arg2
-    apply:
-      steps:
-      - run: echo hi
-      - apply
+#   workflow: myworkflow
+# workflows:
+#   myworkflow:
+#     plan:
+#       steps:
+#       - run: my-custom-command arg1 arg2
+#       - run:
+#           command: my-custom-command arg1 arg2
+#           output: hide
+#       - init
+#       - plan:
+#           extra_args: ["-lock", "false"]
+#       - run: my-custom-command arg1 arg2
+#     apply:
+#       steps:
+#       - run: echo hi
+#       - apply
 allowed_regexp_prefixes:
 - dev/
 - staging/
