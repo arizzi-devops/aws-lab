@@ -24,7 +24,7 @@ jobs:
     defaults:
       run:
         working-directory: "${{ env.tf_folder }}"
-    environment:
+    env:
       name: local
     steps:
       - name: checkout
